@@ -103,7 +103,7 @@ uint16_t MAX17048Component::read16_(uint8_t a_register) {
   uint8_t data[2];
   uint16_t output;
 
-  if (this->read_register(a_register, data, sizeof(data), true) != i2c::ERROR_OK) {
+  if (this->read_register(a_register, data, sizeof(data)) != i2c::ERROR_OK) {
     return 0;
   }
   // ESP_LOGVV(TAG, "read16_ 0x%04X data[0] 0x%02X", a_register, data[0]);
@@ -155,5 +155,5 @@ void MAX17048Component::write16_(uint8_t a_register, uint16_t val) {}
 //   this->write_byte_16(this->read_byte_16()
 // }
 
-} // namespace max17048
-} // namespace esphome
+}  // namespace max17048
+}  // namespace esphome
