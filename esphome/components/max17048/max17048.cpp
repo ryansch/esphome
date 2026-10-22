@@ -41,7 +41,11 @@ void MAX17048Component::update() {
       ok = false;
     }
   }
-  this->status_comm_result(ok, LOG_STR("Register read failed"));
+  if (ok) {
+    this->status_clear_warning();
+  } else {
+    this->status_set_warning(LOG_STR("Register read failed"));
+  }
 }
 
 void MAX17048Component::dump_config() {
